@@ -1,4 +1,5 @@
-# Device Registry
+
+# **Device Registry**
 
 The Device-Registry Service keeps track of the different devices managed by the system and enables
 new devices to be registered, deleted or modified
@@ -13,6 +14,7 @@ All usages of the device registry and exposed methods and endpoints
 **Response**
 
 - 200: success
+
 
 ```json
 [
