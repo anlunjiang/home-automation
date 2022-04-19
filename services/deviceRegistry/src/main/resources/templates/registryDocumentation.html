@@ -28,13 +28,13 @@
                     </div>
                     <div id="navbarMenuHeroA" class="navbar-menu">
                         <div class="navbar-end">
-                            <a href="http://localhost:8080/" class="navbar-item is-active">
+                            <a href="http://localhost:8080" class="navbar-item ">
                                 Home
                             </a>
                             <a href="http://localhost:8080/actuator" class="navbar-item">
                                 Actuator
                             </a>
-                            <a href="http://localhost:8080/documentation" class="navbar-item">
+                            <a class="navbar-item is-active">
                                 Documentation
                             </a>
                             <span class="navbar-item">
@@ -62,24 +62,14 @@
         </div>
     </section>
 
-    <section class="hero is-info is-fullheight">
-<!--         Hero content: will be in the middle-->
+    <section class="hero is-info is-dark">
         <div class="hero-body is-primary">
             <section>
                 <div class="hero-body is-dark">
                     <label class="container"></label>
-                    <div>
-                        Hello - This is the Device Registry Section of the home
-                        automation system <br>
-
-                        Navigate using the navbar at the top of the screen: <br>
-                        <ul>
-                            * Documentation - Read through the API Specs
-                        </ul>
-                    </div>
+                    <label class="is-dark" th:utext="${htmlContent}"></label>
                 </div>
             </section>
-
         </div>
 
         <!-- Hero footer: will stick at the bottom -->
