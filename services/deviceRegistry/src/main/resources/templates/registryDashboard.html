@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>DevReg HAS</title>
 
-    <link data-th-href="@{/webjars/bulma/0.9.3/css/bulma.css}" rel="stylesheet">
-    <link rel="stylesheet" data-th-href="@{/webjars/font-awesome/4.7.0/css/font-awesome.min.css}"/>
+    <link rel="stylesheet" data-th-href="@{/webjars/bulma/0.9.3/css/bulma.css}" >
+    <link rel="stylesheet" data-th-href="@{/webjars/font-awesome/4.7.0/css/font-awesome.min.css}">
+    <link th:href="@{/styles/dashboardHome.css}" rel="stylesheet" />
     <script data-th-src="@{/webjars/timeago.js/4.0.2/dist/timeago.js}"></script>
 </head>
 <body>
@@ -30,8 +31,8 @@
                             <a class="navbar-item is-active">
                                 Home
                             </a>
-                            <a class="navbar-item">
-                                Examples
+                            <a href="http://localhost:8080/actuator" class="navbar-item">
+                                Actuator
                             </a>
                             <a class="navbar-item">
                                 Documentation
@@ -67,7 +68,7 @@
             <section>
                 <div class="hero-body is-dark">
                     <label class="container"></label>
-                    <div class="is-dark" th:utext="${htmlContent}"></div>
+                    <label class="is-dark" th:utext="${htmlContent}"></label>
                 </div>
             </section>
         </div>
