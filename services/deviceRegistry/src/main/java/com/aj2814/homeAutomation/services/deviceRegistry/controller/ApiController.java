@@ -5,6 +5,7 @@ import com.aj2814.homeAutomation.services.deviceRegistry.repository.DevicesRepos
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -32,5 +33,26 @@ public class ApiController {
         System.out.println(newDevice);
         Device created = repository.save(newDevice);
         return new ResponseEntity<>(created, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/device/{deviceId}")
+    @ResponseBody
+    public ResponseEntity<Device> getDevice(@PathVariable int deviceId) {
+        Device device = this.repository.findByIdentifier(deviceId);
+        if (device == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Device ID not found");
+        }
+        return new ResponseEntity<>(device, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/device/{deviceId}")
+    @ResponseBody
+    public ResponseEntity<Device> deleteDevice(@PathVariable int deviceId) {
+        Device device = this.repository.findByIdentifier(deviceId);
+        if (device == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Device ID not found");
+        }
+        repository.delete(device);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

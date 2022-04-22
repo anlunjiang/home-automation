@@ -59,7 +59,8 @@ All usages of the device registry and exposed methods and endpoints
 - `"attributes":object` arbitrary controller-specific information about the device
 - `"state_providers":array` names of external services that provide state
 
-If the ID already exists, the existing device will be overwritten.
+If the ID already exists, the existing device will be overwritten. This is baked in with the Spring JPA
+functionality
 
 **Response**
 
