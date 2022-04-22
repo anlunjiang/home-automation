@@ -10,11 +10,11 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "REGISTRY")
+@Table(name = "DEVICES")
 @TypeDef(name = "json", typeClass = JsonType.class)
-public class Registry implements Serializable {
+public class Device implements Serializable {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int identifier;
     private String name;
     private String type;
@@ -24,10 +24,10 @@ public class Registry implements Serializable {
     @Column(columnDefinition = "json")
     private Room room;
 
-    public Registry() {
+    public Device() {
     }
 
-    public Registry(int identifier, String name, String type, String kind, String controllerName, Room room) {
+    public Device(int identifier, String name, String type, String kind, String controllerName, Room room) {
         this.identifier = identifier;
         this.name = name;
         this.type = type;
@@ -59,4 +59,15 @@ public class Registry implements Serializable {
     public Room getRoom() {
         return room;
     }
+
+    @Override
+    public String toString() {
+        return "id: " + identifier
+                + ", name: " + name
+                + ", type:" + type
+                + ", kind: " + kind
+                + ", controller: " + controllerName
+                + ", room: " + room.toString();
+    }
+
 }
