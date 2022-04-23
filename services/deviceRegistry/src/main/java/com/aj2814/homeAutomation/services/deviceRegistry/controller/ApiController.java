@@ -2,6 +2,7 @@ package com.aj2814.homeAutomation.services.deviceRegistry.controller;
 
 import com.aj2814.homeAutomation.services.deviceRegistry.entity.Device;
 import com.aj2814.homeAutomation.services.deviceRegistry.repository.DevicesRepository;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -48,11 +49,11 @@ public class ApiController {
     @DeleteMapping("/device/{deviceId}")
     @ResponseBody
     public ResponseEntity<Device> deleteDevice(@PathVariable int deviceId) {
-        Device device = this.repository.findByIdentifier(deviceId);
-        if (device == null) {
+        try {
+            repository.deleteById(deviceId);
+        } catch (EmptyResultDataAccessException e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Device ID not found");
         }
-        repository.delete(device);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
