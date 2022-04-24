@@ -29,19 +29,18 @@ public class ApiController {
     @GetMapping("/devices")
     public ResponseEntity<List<DeviceEntity>> listDevices() {
         Iterable<DeviceEntity> devices = this.devicesRepository.findAll();
-        List<DeviceEntity> devicesList =  StreamSupport.stream(devices.spliterator(), true).collect(Collectors.toList());
+        List<DeviceEntity> devicesList =  StreamSupport.stream(devices.spliterator(), true)
+                .collect(Collectors.toList());
         return new ResponseEntity<>(devicesList, HttpStatus.OK);
     }
 
     @PostMapping("/devices")
-    public ResponseEntity<DeviceEntity> postDevices(@RequestBody DeviceEntity newDevice) {
-        System.out.println(newDevice);
+    public ResponseEntity<DeviceEntity> postDevice(@RequestBody DeviceEntity newDevice) {
         DeviceEntity created = devicesRepository.save(newDevice);
         return new ResponseEntity<>(created, HttpStatus.CREATED);
     }
 
-    @GetMapping("/device/{deviceId}")
-    @ResponseBody
+    @GetMapping("/devices/{deviceId}")
     public ResponseEntity<DeviceEntity> getDevice(@PathVariable int deviceId) {
         DeviceEntity device = this.devicesRepository.findByIdentifier(deviceId);
         if (device == null) {
@@ -50,7 +49,7 @@ public class ApiController {
         return new ResponseEntity<>(device, HttpStatus.OK);
     }
 
-    @DeleteMapping("/device/{deviceId}")
+    @DeleteMapping("/devices/{deviceId}")
     public ResponseEntity<RoomEntity> deleteDevice(@PathVariable int deviceId) {
         try {
             devicesRepository.deleteById(deviceId);
@@ -63,8 +62,34 @@ public class ApiController {
     @GetMapping("/rooms")
     public ResponseEntity<List<RoomEntity>> getRooms() {
         Iterable<RoomEntity> rooms = roomsRepository.findAll();
-        List<RoomEntity> roomsList =  StreamSupport.stream(rooms.spliterator(), true).collect(Collectors.toList());
+        List<RoomEntity> roomsList =  StreamSupport.stream(rooms.spliterator(), true)
+                .collect(Collectors.toList());
         return new ResponseEntity<>(roomsList, HttpStatus.OK);
+    }
+
+    @PostMapping("/rooms/")
+    public ResponseEntity<RoomEntity> postRoom(@RequestBody RoomEntity newRoom) {
+        RoomEntity created = this.roomsRepository.save(newRoom);
+        return new ResponseEntity<>(created, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/rooms/{roomId}")
+    public ResponseEntity<RoomEntity> getRoom(@PathVariable int roomId) {
+        RoomEntity room = this.roomsRepository.findByIdentifier(roomId);
+        if (room == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Room ID not found");
+        }
+        return new ResponseEntity<>(room, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/rooms/{roomId}")
+    public ResponseEntity<RoomEntity> deleteRoom(@PathVariable int roomId) {
+        try {
+            roomsRepository.deleteById(roomId);
+        } catch (EmptyResultDataAccessException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Room ID not found");
+        }
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
 

@@ -24,4 +24,34 @@ shared network. Each service will be containerised and run via Docker.
   * Will talk to the device registry, get the state of those devices and then talk to the
   relevant controllers to control the devices
 
+# home-automation device landscape
 
+Iterative refinement on the number of devices ideally at a prod level
+
+## Kitchen
+* Kettle
+* Speaker
+
+## Living Room
+* TV
+* Lamp
+* Fairy Lights?
+* Ceiling lights
+* Heater
+* RGB Strips / DMX Lighting?
+
+## Bedroom Master
+* Ceiling Lights
+* Bedside Lamp
+* RGB Strips?
+* Heater
+
+## Bedroom 2
+* Bedroom Light
+* Roomba?
+
+## Hallway 
+* Ceiling Lights
+
+## Bathroom
+* Ceiling Light
