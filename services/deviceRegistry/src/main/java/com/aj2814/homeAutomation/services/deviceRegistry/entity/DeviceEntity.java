@@ -12,7 +12,7 @@ import java.io.Serializable;
 @Entity
 @Table(name = "DEVICES")
 @TypeDef(name = "json", typeClass = JsonType.class)
-public class Device implements Serializable {
+public class DeviceEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int identifier;
@@ -24,10 +24,10 @@ public class Device implements Serializable {
     @Column(columnDefinition = "json")
     private Room room;
 
-    public Device() {
+    public DeviceEntity() {
     }
 
-    public Device(int identifier, String name, String type, String kind, String controllerName, Room room) {
+    public DeviceEntity(int identifier, String name, String type, String kind, String controllerName, Room room) {
         this.identifier = identifier;
         this.name = name;
         this.type = type;

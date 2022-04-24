@@ -5,7 +5,7 @@ The Device-Registry Service keeps track of the different devices managed by the 
 new devices to be registered, deleted or modified
 
 ## Usage
-All usages of the device registry and exposed methods and endpoints
+All usages of the deviceEntity registry and exposed methods and endpoints
 ### List all devices
 **Definition**
 
@@ -43,23 +43,23 @@ All usages of the device registry and exposed methods and endpoints
 ]
 ```
 
-### Register a new device
+### Register a new deviceEntity
 **Definition**
 
 `POST /devices`
 
 **Arguments**
 
-- `"id":string` a globally unique ID for this device
-- `"name":string` a friendly name for the device
-- `"type":string` the type of the device as understood by the client e.g. hs100
-- `"kind":string` the kind of device - mapped to type e.g. lamp
+- `"id":string` a globally unique ID for this deviceEntity
+- `"name":string` a friendly name for the deviceEntity
+- `"type":string` the type of the deviceEntity as understood by the client e.g. hs100
+- `"kind":string` the kind of deviceEntity - mapped to type e.g. lamp
 - `"room_id":string` the globally unique ID of the room
-- `"controller_name":string` the name of the device's controller
-- `"attributes":object` arbitrary controller-specific information about the device
+- `"controller_name":string` the name of the deviceEntity's controller
+- `"attributes":object` arbitrary controller-specific information about the deviceEntity
 - `"state_providers":array` names of external services that provide state
 
-If the ID already exists, the existing device will be overwritten. This is baked in with the Spring JPA
+If the ID already exists, the existing deviceEntity will be overwritten. This is baked in with the Spring JPA
 functionality
 
 **Response**
@@ -67,7 +67,7 @@ functionality
 - 400: unknown room
 - 201: created successfully
 
-Returns the new device if successful.
+Returns the new deviceEntity if successful.
 
 ```json
 {
@@ -83,14 +83,14 @@ Returns the new device if successful.
 }
 ```
 
-### Lookup device details
+### Lookup deviceEntity details
 **Definition**
 
-`GET /device/<id>`
+`GET /deviceEntity/<id>`
 
 **Response**
 
-- 404: device not found
+- 404: deviceEntity not found
 - 200: success
 
 ```json
@@ -107,14 +107,14 @@ Returns the new device if successful.
 }
 ```
 
-### Delete a device
+### Delete a deviceEntity
 **Definition**
 
-`DELETE /device/<id>`
+`DELETE /deviceEntity/<id>`
 
 **Response**
 
-- 404: device not found
+- 404: deviceEntity not found
 - 204: success
 
 ### List rooms

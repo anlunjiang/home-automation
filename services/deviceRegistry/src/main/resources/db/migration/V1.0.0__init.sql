@@ -9,5 +9,14 @@ create table DEVICES(
     state_providers array
 );
 
+create table ROOMS(
+    identifier identity not null primary key,
+    name varchar(50) not null,
+    devices array
+);
+
 create index idx_devices_id
     on DEVICES(identifier);
+
+create index idx_rooms_id
+    on ROOMS(identifier)
