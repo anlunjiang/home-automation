@@ -19,12 +19,12 @@ public class RoomEntity implements Serializable {
     private String name;
     @Type(type = "intArray")
     @Column(columnDefinition = "intArray")
-    private Integer[] devices;
+    private int[] devices;
 
     public RoomEntity() {
     }
 
-    public RoomEntity(int identifier, String name, Integer[] devices) {
+    public RoomEntity(int identifier, String name, int[] devices) {
         this.identifier = identifier;
         this.name = name;
         this.devices = devices;
@@ -38,8 +38,12 @@ public class RoomEntity implements Serializable {
         return name;
     }
 
-    public Integer[] getDevices() {
+    public int[] getDevices() {
         return devices;
+    }
+
+    public void setDevices(int[] devices) {
+        this.devices = devices;
     }
 
     @Override

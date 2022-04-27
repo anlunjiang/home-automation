@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
@@ -36,7 +37,16 @@ public class ApiController {
 
     @PostMapping("/devices")
     public ResponseEntity<DeviceEntity> postDevice(@RequestBody DeviceEntity newDevice) {
-        DeviceEntity created = devicesRepository.save(newDevice);
+        RoomEntity room = roomsRepository.findByIdentifier(newDevice.getRoom().getId());
+        if (room == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Invalid Room associated with device");
+        }
+        DeviceEntity created = devicesRepository.save(newDevice); // initiates identifier by saving
+        List<Integer> roomDevices = Arrays.stream(room.getDevices()).boxed().collect(Collectors.toList());
+        roomDevices.add(created.getIdentifier());
+        room.setDevices(roomDevices.stream().mapToInt(i -> i).toArray());
+        roomsRepository.save(room);
+
         return new ResponseEntity<>(created, HttpStatus.CREATED);
     }
 

@@ -4,4 +4,5 @@ values
     (2, 'thermostat 1', 't1', 'thermo', 'server', '{"id": 2, "name": "living room"}' format json);
 
 insert into ROOMS(IDENTIFIER, NAME ,DEVICES)
-values (1, 'kitchen', (1, 2));
+values (1, 'kitchen', ()),
+       (2, 'living_room', ());

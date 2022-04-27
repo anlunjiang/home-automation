@@ -15,7 +15,7 @@ import java.io.Serializable;
 public class DeviceEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int identifier;
+    private Integer identifier;
     private String name;
     private String type;
     private String kind;
@@ -27,7 +27,7 @@ public class DeviceEntity implements Serializable {
     public DeviceEntity() {
     }
 
-    public DeviceEntity(int identifier, String name, String type, String kind, String controllerName, Room room) {
+    public DeviceEntity(Integer identifier, String name, String type, String kind, String controllerName, Room room) {
         this.identifier = identifier;
         this.name = name;
         this.type = type;
@@ -36,7 +36,7 @@ public class DeviceEntity implements Serializable {
         this.room = room;
     }
 
-    public int getIdentifier() {
+    public Integer getIdentifier() {
         return identifier;
     }
 
