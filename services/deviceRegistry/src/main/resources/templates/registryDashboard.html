@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DevReg HAS</title>
+
+    <link rel="stylesheet" data-th-href="@{/webjars/bulma/0.9.3/css/bulma.css}" >
+    <link rel="stylesheet" data-th-href="@{/webjars/font-awesome/4.7.0/css/font-awesome.min.css}">
+    <link th:href="@{/styles/dashboardHome.css}" rel="stylesheet" />
+    <script data-th-src="@{/webjars/timeago.js/4.0.2/dist/timeago.js}"></script>
+</head>
+<body>
+    <section class="hero is-link is-bold">
+        <!-- Hero head: will stick at the top -->
+        <div class="hero-head">
+            <nav class="navbar">
+                <div class="container">
+                    <div class="navbar-brand">
+                        <a class="navbar-item">
+                            <img src="/images/logo.png" alt="Logo">
+                        </a>
+                        <span class="navbar-burger" data-target="navbarMenuHeroA">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+                    </div>
+                    <div id="navbarMenuHeroA" class="navbar-menu">
+                        <div class="navbar-end">
+                            <a href="http://localhost:8080/" class="navbar-item is-active">
+                                Home
+                            </a>
+                            <a href="http://localhost:8080/actuator" class="navbar-item">
+                                Actuator
+                            </a>
+                            <a href="http://localhost:8080/documentation" class="navbar-item">
+                                Documentation
+                            </a>
+                            <span class="navbar-item">
+              <a href="http://localhost:8080/h2-console" class="button is-primary is-inverted">
+                <span class="icon">
+                  <i class="fab fa-github"></i>
+                </span>
+                <span>H2-Console</span>
+              </a>
+            </span>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <h1 class="title">
+                    <i class="fa fa-github-square" aria-hidden="true"></i>&nbsp;Device Registry
+                </h1>
+                <h1 class="subtitle">
+                    <i class="fa" aria-hidden="true"></i>&nbsp;Home Automation System
+                </h1>
+            </div>
+        </div>
+    </section>
+
+    <section class="hero is-info is-fullheight">
+<!--         Hero content: will be in the middle-->
+        <div class="hero-body is-primary">
+            <section>
+                <div class="hero-body is-dark">
+                    <label class="container"></label>
+                    <div>
+                        Hello - This is the Device Registry Section of the home
+                        automation system <br>
+
+                        Navigate using the navbar at the top of the screen: <br>
+                        <ul>
+                            <li>Documentation - Read through the API Specs</li>
+                            <li>Actuator - Links to system level metrics</li>
+                            <li>H2-Console - navigate to H2-Console: Password Protected</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Hero footer: will stick at the bottom -->
+        <div class="hero-foot">
+            <nav class="tabs">
+                <div class="container">
+                    <ul>
+                        <li class="is-active"><a>Overview</a></li>
+                        <li><a>Modifiers</a></li>
+                        <li><a>Grid</a></li>
+                        <li><a>Elements</a></li>
+                        <li><a>Components</a></li>
+                        <li><a>Layout</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </section>
+
+</body>
+</html>
