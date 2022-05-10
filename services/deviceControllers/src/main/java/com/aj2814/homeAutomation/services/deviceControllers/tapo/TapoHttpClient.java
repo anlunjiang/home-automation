@@ -1,7 +1,7 @@
-package com.aj2814.homeAutomation.services.deviceControllers.common;
+package com.aj2814.homeAutomation.services.deviceControllers.tapo;
 
 
-import com.aj2814.homeAutomation.services.deviceControllers.tapo.entity.requests.TapoResponse;
+import com.aj2814.homeAutomation.services.deviceControllers.tapo.requests.TapoResponse;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpEntity;
@@ -28,10 +28,6 @@ public class TapoHttpClient {
     /**
      * Generic post request for tapo devices - accepts JSONObject, but body is usually of type that inherits this
      * type. Attaches the created headers and posts to the specified URL
-     * @param url - endpoint for post request
-     * @param body - body of request
-     * @param cookie - cookie if needed
-     * @return response from device
      */
     public ResponseEntity<TapoResponse> tapoPost(String url, JSONObject body, String cookie) {
         HttpHeaders headers = createHeaders(cookie);
